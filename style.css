@@ -1,32 +1,47 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap");
 
 :root {
   --red: #bd2028;
   --paper: #d9d0bd;
   --dark: #101113;
-  --section-gap: 100px;
+  --section-gap: 72px;
+  --page-gutter: clamp(18px, 5vw, 72px);
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
   background: var(--dark);
   color: #eee;
   font-family: "Vazirmatn", Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 section {
   position: relative;
-  padding: 85px 7%;
+  padding: clamp(58px, 7vw, 90px) var(--page-gutter);
   overflow: hidden;
 }
 
@@ -34,42 +49,45 @@ section {
 
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background:
-    linear-gradient(90deg, #090a0bd9, #090a0b82),
+    linear-gradient(90deg, rgba(9, 10, 11, .88), rgba(9, 10, 11, .42)),
     url("img/background.webp") center / cover no-repeat;
 }
 
 .top-label {
   position: absolute;
-  top: 25px;
-  right: 7%;
-  letter-spacing: 3px;
-  font-size: 11px;
+  top: 24px;
+  right: var(--page-gutter);
   color: #aaa;
   direction: ltr;
+  letter-spacing: 2px;
+  font-size: 11px;
 }
 
 .hero-content {
+  width: 100%;
   max-width: 720px;
 }
 
 .kicker {
   color: var(--red);
-  letter-spacing: 5px;
   direction: ltr;
   text-align: right;
+  letter-spacing: clamp(2px, .5vw, 5px);
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 h1 {
-  font-size: clamp(48px, 10vw, 110px);
-  line-height: 1.1;
   margin: 15px 0;
+  font-size: clamp(42px, 9vw, 110px);
+  line-height: 1.15;
   font-weight: 900;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
+  overflow-wrap: anywhere;
 }
 
 h1 span {
@@ -78,34 +96,42 @@ h1 span {
 
 .subtitle {
   color: #aaa;
-  letter-spacing: 3px;
   direction: ltr;
   text-align: right;
+  letter-spacing: 2px;
   font-size: 12px;
 }
 
 .hero-text {
-  margin-top: 30px;
   max-width: 470px;
-  line-height: 2.2;
+  margin-top: 26px;
   color: #ddd;
+  line-height: 2.1;
   white-space: pre-line;
 }
 
 /* BUTTON */
 
 .btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 13px 25px;
-  background: var(--red);
-  color: white;
-  text-decoration: none;
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 26px;
+  padding: 12px 24px;
   border: 0;
+  border-radius: 2px;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font: inherit;
+  font-size: 13px;
   cursor: pointer;
-  font-family: inherit;
-  transition: 0.3s;
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
 }
 
 .btn:hover {
@@ -113,594 +139,140 @@ h1 span {
   color: #111;
 }
 
-/* WANTED SECTION */
-
-.file-section {
-  background: #171717;
+.btn:active {
+  transform: scale(.98);
 }
 
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+/* SECTION HEADINGS */
+
 .section-head {
-  margin-bottom: 40px;
+  margin-bottom: clamp(28px, 4vw, 45px);
 }
 
 .section-head small {
-  color: var(--red);
-  direction: ltr;
   display: block;
-  letter-spacing: 4px;
   margin-bottom: 12px;
+  color: #b52b2b;
+  direction: ltr;
+  letter-spacing: 4px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .section-head h2 {
-  font-size: clamp(28px, 5vw, 48px);
+  color: #e7e0d3;
+  font-size: clamp(27px, 4.5vw, 48px);
+  line-height: 1.5;
 }
-
-.poster {
-  max-width: 850px;
-  margin: auto;
-  padding: 25px;
-  color: #181818;
-  background:
-    linear-gradient(#d9d0bded, #d9d0bded),
-    repeating-linear-gradient(
-      0deg,
-      #777 0px,
-      #777 1px,
-      transparent 1px,
-      transparent 4px
-    );
-  box-shadow: 0 15px 60px #0008;
-  transform: rotate(-0.5deg);
-}
-
-.poster-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border-bottom: 3px solid #222;
-  padding-bottom: 12px;
-}
-
-.poster-top strong {
-  font-size: clamp(24px, 5vw, 45px);
-  letter-spacing: 2px;
-  direction: ltr;
-}
-
-.stamp {
-  border: 3px solid var(--red);
-  color: var(--red);
-  padding: 5px 10px;
-  font-weight: 900;
-  transform: rotate(-8deg);
-  direction: ltr;
-}
-
-.poster-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.8fr);
-  gap: 22px;
-  padding: 25px 0;
-}
-
-/* POSTER PHOTO */
-
-.photo-placeholder {
-  min-height: 310px;
-  position: relative;
-  overflow: hidden;
-  background: #252525;
-  border: 4px solid #333;
-}
-
-.suspect-photo {
-  display: block;
-  width: 100%;
-  height: 310px;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.15) brightness(0.8);
-}
-
-.photo-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px 5px;
-  background: #111d;
-  color: #ddd;
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 2px;
-  direction: ltr;
-}
-
-/* CASE DETAILS */
-
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  font-size: 13px;
-}
-
-.details label {
-  color: #666;
-  display: block;
-  font-size: 10px;
-  margin-bottom: 4px;
-}
-
-.blank {
-  height: 24px;
-  border-bottom: 1px solid #777;
-}
-
-.red-text {
-  color: var(--red);
-}
-
-.poster-bottom {
-  border-top: 3px solid #222;
-  padding-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-size: 10px;
-  direction: ltr;
-}
-
-/* ROMANTIC MESSAGE BACKGROUND */
-
-.quote {
-  position: relative;
-  isolation: isolate;
-
-  /* Keep this section separate from the next image */
-  margin: 0 0 var(--section-gap);
-  min-height: 650px;
-  padding: 60px 5%;
-
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.08)
-    ),
-    url("img/Stormy\ Night\ Behind\ the\ Fence.webp");
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-
-  color: #ff0000;
-  direction: ltr;
-  text-align: right;
-}
-
-/* TEXT ON LEFT SIDE */
-
-.quote .section-head,
-.quote > p {
-  position: relative;
-  width: 48%;
-  max-width: 560px;
-  margin-left: 0;
-  margin-right: auto;
-  direction: rtl;
-  text-align: right;
-}
-
-.quote .section-head {
-  margin-bottom: 15px;
-}
-
-.quote .section-head small {
-  display: block;
-  color: #ff0000;
-  letter-spacing: 2px;
-  font-size: 10px;
-  margin-bottom: 8px;
-}
-
-.quote .section-head h2 {
-  font-size: 24px;
-  line-height: 1.8;
-  text-shadow: 0 2px 8px #000;
-}
-
-.quote > p {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #fff;
-  font-size: 13px;
-  line-height: 2;
-  white-space: normal;
-  text-shadow: 0 2px 6px #000;
-}
-
-/* SPACE BETWEEN THE TWO BACKGROUNDS */
-
-.quote::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  bottom: calc(-1 * var(--section-gap));
-  left: 0;
-  width: 100%;
-  height: var(--section-gap);
-  background: var(--dark);
-  pointer-events: none;
-}
-
-/* FINAL SURPRISE BACKGROUND */
-
-.surprise {
-  position: relative;
-  isolation: isolate;
-
-  /* Independent section with its own background */
-  margin: 0;
-  padding: 80px 7%;
-  min-height: 700px;
-
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.35),
-      rgba(0, 0, 0, 0.75)
-    ),
-    url("img/love-background.webp") center / cover no-repeat;
-
-  color: #fff;
-  text-align: center;
-  direction: rtl;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.surprise h2 {
-  font-size: clamp(30px, 6vw, 55px);
-  margin: 15px 0;
-}
-
-.lock-icon {
-  color: var(--red);
-  font-size: 45px;
-}
-
-.surprise .kicker,
-.surprise h2,
-.surprise .surprise-intro,
-.surprise .lock-icon {
-  text-shadow: 0 2px 8px #000;
-}
-
-.surprise .kicker {
-  direction: ltr;
-  text-align: center;
-}
-
-.surprise .surprise-intro {
-  max-width: 650px;
-  color: #ddd;
-  line-height: 2.2;
-  margin: 20px auto 30px;
-}
-
-.surprise .btn {
-  cursor: pointer;
-  margin-bottom: 30px;
-}
-
-/* HIDDEN CONTENT */
-
-.secret {
-  display: none;
-  max-width: 760px;
-  width: 100%;
-  margin: 35px auto 0;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(3px);
-}
-
-.secret.show {
-  display: block;
-  animation: reveal 1s ease;
-}
-
-.childhood-image {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  max-height: 350px;
-  object-fit: cover;
-  margin: 0 auto 25px;
-  border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  filter: sepia(0.18);
-}
-
-.secret h3 {
-  font-size: 25px;
-  margin: 0 0 20px;
-  color: #f2d6c2;
-  text-shadow: 0 2px 8px #000;
-}
-
-.secret p {
-  font-size: 15px;
-  line-height: 2.3;
-  text-align: justify;
-  text-align-last: center;
-  color: #fff;
-  white-space: pre-line;
-  text-shadow: 0 1px 5px #000;
-}
-
-/* FOOTER */
-
-footer {
-  padding: 22px;
-  text-align: center;
-  background: #090909;
-  color: #555;
-  font-size: 10px;
-  letter-spacing: 3px;
-  direction: ltr;
-}
-
-/* ANIMATION */
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* TABLET */
-
-@media (max-width: 900px) {
-  .quote {
-    min-height: 650px;
-    background-position: center;
-  }
-
-  .quote .section-head,
-  .quote > p {
-    width: 55%;
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-  :root {
-    --section-gap: 70px;
-  }
-
-  .quote {
-    min-height: 650px;
-    padding: 40px 5%;
-    background-size: cover;
-    background-position: 65% center;
-  }
-
-  .quote .section-head,
-  .quote > p {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .quote .section-head h2 {
-    font-size: 21px;
-  }
-
-  .quote > p {
-    font-size: 12px;
-    line-height: 2.1;
-  }
-}
-
-@media (max-width: 600px) {
-  section {
-    padding: 75px 6%;
-  }
-
-  .poster {
-    padding: 14px;
-  }
-
-  .poster-body {
-    gap: 12px;
-  }
-
-  .photo-placeholder {
-    min-height: 250px;
-  }
-
-  .suspect-photo {
-    height: 250px;
-  }
-
-  .details {
-    font-size: 11px;
-    gap: 12px;
-  }
-
-  .stamp {
-    font-size: 11px;
-  }
-
-  .surprise {
-    padding: 60px 5%;
-    min-height: 650px;
-  }
-
-  .secret {
-    padding: 20px 16px;
-  }
-
-  .secret p {
-    font-size: 14px;
-    line-height: 2.3;
-  }
-
-  .surprise h2 {
-    font-size: 27px;
-  }
-}
-
-
 
 /* WANTED / POLICE CASE FILE */
 
 .file-section {
   background:
     radial-gradient(ellipse at top, #292725 0%, #171717 70%);
-  padding-top: 100px;
-  padding-bottom: 110px;
+  padding-top: clamp(65px, 8vw, 100px);
+  padding-bottom: clamp(70px, 9vw, 110px);
 }
-
-.section-head {
-  margin-bottom: 45px;
-}
-
-.section-head small {
-  color: #b52b2b;
-  display: block;
-  direction: ltr;
-  letter-spacing: 5px;
-  font-size: 11px;
-  margin-bottom: 14px;
-  font-weight: 700;
-}
-
-.section-head h2 {
-  color: #e7e0d3;
-  font-size: clamp(28px, 5vw, 48px);
-  letter-spacing: 1px;
-}
-
-/* OLD CASE PAPER */
 
 .poster {
   position: relative;
+  width: 100%;
   max-width: 850px;
-  margin: auto;
-  padding: 30px;
+  margin: 0 auto;
+  padding: clamp(16px, 3.5vw, 30px);
   color: #201d19;
-
   background-color: #c9bea7;
   background-image:
     radial-gradient(ellipse at 15% 20%, #ffffff30, transparent 40%),
     radial-gradient(ellipse at 85% 80%, #55452b20, transparent 45%),
     repeating-linear-gradient(
       0deg,
-      #75694d08 0px,
+      #75694d08 0,
       #75694d08 1px,
       transparent 1px,
       transparent 4px
     );
-
   border: 1px solid #8c8068;
   box-shadow:
     0 25px 55px #000a,
     inset 0 0 25px #62543b35;
-
-  transform: rotate(-0.3deg);
+  transform: rotate(-.2deg);
 }
-
-/* PAPER AGED EDGES */
 
 .poster::before {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
   border: 8px solid #5c4c3020;
+  pointer-events: none;
 }
 
-/* TOP HEADER */
+/* POSTER HEADER */
 
 .poster-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-
-  border-bottom: 3px double #302a22;
-  padding-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 5px;
+  padding-bottom: 16px;
+  border-bottom: 3px double #302a22;
 }
 
 .poster-top strong {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 6vw, 52px);
-  font-weight: 900;
-  letter-spacing: 5px;
-  line-height: 1;
   color: #211c17;
   direction: ltr;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 5.5vw, 52px);
+  font-weight: 900;
+  letter-spacing: clamp(1px, .5vw, 5px);
+  line-height: 1.15;
 }
 
-/* RED OFFICIAL STAMP */
-
 .stamp {
+  flex-shrink: 0;
+  padding: 7px 10px;
   border: 3px solid #a52626;
   color: #a52626;
-  padding: 7px 12px;
-
+  direction: ltr;
   font-family: Georgia, serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   white-space: nowrap;
-
-  transform: rotate(-9deg);
-  opacity: 0.88;
+  transform: rotate(-7deg);
+  opacity: .88;
   mix-blend-mode: multiply;
 }
 
-/* MAIN POSTER CONTENT */
+/* POSTER CONTENT */
 
 .poster-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.8fr);
-  gap: 25px;
-  padding: 25px 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .8fr);
   align-items: start;
+  gap: clamp(12px, 3vw, 25px);
+  padding: clamp(18px, 3vw, 25px) 0;
 }
 
-/* SUSPECT PHOTO */
+/* POSTER PHOTO */
 
 .photo-placeholder {
-  min-height: 310px;
   position: relative;
+  min-width: 0;
   overflow: hidden;
-
   background: #292721;
-  border: 7px solid #e0d5bd;
+  border: 6px solid #e0d5bd;
   outline: 1px solid #625744;
-
   box-shadow:
     0 4px 12px #0005,
     inset 0 0 0 1px #2d281f;
@@ -709,61 +281,60 @@ footer {
 .suspect-photo {
   display: block;
   width: 100%;
-  height: 310px;
-  object-fit: cover;
-
+  height: clamp(240px, 34vw, 340px);
+  object-fit: contain;
+  object-position: center;
+  background: #292721;
   filter:
     grayscale(100%)
     sepia(18%)
-    contrast(1.18)
-    brightness(0.82);
+    contrast(1.12)
+    brightness(.86);
 }
-
-/* PHOTO LABEL */
 
 .photo-caption {
   position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-
-  padding: 10px 5px;
+  padding: 9px 5px;
   background: #171512e8;
   color: #e1d6c0;
-
   text-align: center;
   font-family: "Courier New", monospace;
   font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: 1px;
   direction: ltr;
 }
 
-/* CASE INFORMATION */
+/* CASE DETAILS */
 
 .details {
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  gap: 18px;
-
+  gap: 15px;
+  color: #28231c;
   font-family: "Courier New", monospace;
   font-size: 12px;
-  font-weight: bold;
-  color: #28231c;
+  font-weight: 700;
 }
 
 .details > div {
+  min-width: 0;
   padding-bottom: 7px;
   border-bottom: 1px solid #6d604b70;
+  overflow-wrap: anywhere;
 }
 
 .details label {
   display: block;
+  margin-bottom: 5px;
   color: #6d2823;
   font-family: "Vazirmatn", Tahoma, sans-serif;
   font-size: 10px;
   font-weight: 900;
-  margin-bottom: 5px;
 }
 
 .blank {
@@ -776,83 +347,555 @@ footer {
   font-weight: 900;
 }
 
-/* BOTTOM CLASSIFICATION */
+/* POSTER FOOTER */
 
 .poster-bottom {
-  border-top: 3px double #302a22;
-  padding-top: 14px;
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 12px;
-
-  font-family: "Courier New", monospace;
-  font-size: 10px;
-  font-weight: bold;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding-top: 14px;
+  border-top: 3px double #302a22;
   color: #393025;
   direction: ltr;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ROMANTIC MESSAGE SECTION */
+
+.quote {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: clamp(560px, 52vw, 700px);
+  margin: 0 0 var(--section-gap);
+  padding: clamp(45px, 6vw, 70px) var(--page-gutter);
+  color: #fff;
+  direction: rtl;
+  text-align: right;
+  background-color: #171717;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, .42),
+      rgba(0, 0, 0, .12)
+    ),
+    url("img/Stormy Night Behind the Fence.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.quote .section-head,
+.quote > p {
+  position: relative;
+  z-index: 1;
+  width: min(48%, 560px);
+  margin-right: auto;
+  margin-left: 0;
+  direction: rtl;
+  text-align: right;
+}
+
+.quote .section-head {
+  margin-bottom: 15px;
+}
+
+.quote .section-head small {
+  color: #ff3030;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+.quote .section-head h2 {
+  color: #fff;
+  font-size: clamp(22px, 2.5vw, 30px);
+  line-height: 1.8;
+  text-shadow: 0 2px 8px #000;
+}
+
+.quote > p {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 2.1;
+  white-space: normal;
+  text-shadow: 0 2px 6px #000;
+}
+
+/* SPACE BETWEEN SECTIONS */
+
+.quote::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: calc(-1 * var(--section-gap));
+  left: 0;
+  height: var(--section-gap);
+  background: var(--dark);
+  pointer-events: none;
+}
+
+/* FINAL SURPRISE SECTION */
+
+.surprise {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 680px;
+  margin: 0;
+  padding: clamp(55px, 7vw, 80px) var(--page-gutter);
+  color: #fff;
+  text-align: center;
+  direction: rtl;
+  background-color: #101113;
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, .35),
+      rgba(0, 0, 0, .78)
+    ),
+    url("img/love-background.webp");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.surprise .kicker,
+.surprise h2,
+.surprise .surprise-intro,
+.surprise .lock-icon {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px #000;
+}
+
+.surprise .kicker {
+  text-align: center;
+  direction: ltr;
+}
+
+.surprise h2 {
+  margin: 15px 0;
+  font-size: clamp(28px, 5vw, 55px);
+  line-height: 1.45;
+}
+
+.lock-icon {
+  color: var(--red);
+  font-size: clamp(36px, 5vw, 45px);
+}
+
+.surprise .surprise-intro {
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto 26px;
+  color: #eee;
+  font-size: 15px;
+  line-height: 2.1;
+}
+
+.surprise .btn {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 20px;
+}
+
+/* HIDDEN / SECRET CONTENT */
+
+.secret {
+  display: none;
+  width: 100%;
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: clamp(18px, 4vw, 30px);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .72);
+  backdrop-filter: blur(3px);
+}
+
+.secret.show {
+  display: block;
+  animation: reveal .7s ease both;
+}
+
+/* CHILDHOOD PHOTO: KEEP FULL IMAGE VISIBLE */
+
+.childhood-image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 360px);
+  height: auto;
+  max-height: 70svh;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto 24px;
+  border: 2px solid rgba(255, 255, 255, .45);
+  border-radius: 8px;
+  filter: sepia(.12);
+}
+
+.secret h3 {
+  margin: 0 0 18px;
+  color: #f2d6c2;
+  font-size: clamp(20px, 3vw, 25px);
+  line-height: 1.6;
+  text-shadow: 0 2px 8px #000;
+}
+
+.secret p {
+  color: #fff;
+  font-size: 15px;
+  line-height: 2.2;
+  text-align: justify;
+  text-align-last: center;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  text-shadow: 0 1px 5px #000;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 22px 16px;
+  background: #090909;
+  color: #777;
+  text-align: center;
+  direction: ltr;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ANIMATION */
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  :root {
+    --section-gap: 56px;
+  }
+
+  .quote {
+    min-height: 620px;
+    background-position: 58% center;
+  }
+
+  .quote .section-head,
+  .quote > p {
+    width: 58%;
+  }
+
+  .poster-body {
+    gap: 16px;
+  }
 }
 
 /* MOBILE */
 
 @media (max-width: 600px) {
-  .file-section {
-    padding-top: 70px;
-    padding-bottom: 75px;
+  :root {
+    --section-gap: 42px;
+    --page-gutter: 18px;
   }
 
-  .poster {
-    padding: 18px 14px;
+  section {
+    padding-top: 58px;
+    padding-bottom: 58px;
   }
 
-  .poster-top {
-    gap: 8px;
+  .hero {
+    min-height: 92svh;
+    padding-top: 78px;
+    padding-bottom: 48px;
+    background-position: 58% center;
   }
 
-  .poster-top strong {
-    font-size: 32px;
+  .top-label {
+    top: 20px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .kicker {
+    font-size: 11px;
     letter-spacing: 2px;
   }
 
-  .stamp {
+  h1 {
+    margin: 14px 0;
+    font-size: clamp(40px, 13vw, 66px);
+    letter-spacing: -1.5px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .btn {
+    min-height: 44px;
+    max-width: 100%;
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+
+  .section-head {
+    margin-bottom: 28px;
+  }
+
+  .section-head small {
     font-size: 9px;
-    padding: 6px 7px;
+    letter-spacing: 3px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(25px, 7vw, 34px);
+  }
+
+  .file-section {
+    padding-top: 64px;
+    padding-bottom: 70px;
+  }
+
+  .poster {
+    padding: 16px 12px;
+    transform: none;
+  }
+
+  .poster::before {
+    border-width: 5px;
+  }
+
+  .poster-top {
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+  }
+
+  .poster-top strong {
+    font-size: clamp(25px, 8vw, 36px);
+    letter-spacing: 1px;
+  }
+
+  .stamp {
+    padding: 5px 7px;
     border-width: 2px;
+    font-size: 8px;
+    letter-spacing: .5px;
   }
 
   .poster-body {
-    grid-template-columns: minmax(0, 1fr) minmax(105px, 0.8fr);
-    gap: 12px;
-    padding: 20px 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+    gap: 10px;
+    padding: 16px 0;
   }
 
   .photo-placeholder {
-    min-height: 250px;
     border-width: 4px;
   }
 
   .suspect-photo {
-    height: 250px;
+    height: clamp(190px, 58vw, 270px);
+    object-fit: contain;
   }
 
   .photo-caption {
-    font-size: 8px;
-    letter-spacing: 1px;
+    padding: 7px 3px;
+    font-size: 7px;
+    letter-spacing: .4px;
   }
 
   .details {
-    font-size: 10px;
-    gap: 13px;
-    overflow-wrap: anywhere;
+    gap: 11px;
+    font-size: 9px;
+    line-height: 1.5;
   }
 
   .details label {
-    font-size: 9px;
+    margin-bottom: 3px;
+    font-size: 8px;
+  }
+
+  .blank {
+    height: 16px;
   }
 
   .poster-bottom {
+    gap: 7px;
     font-size: 8px;
+    line-height: 1.5;
+  }
+
+  /* QUOTE BACKGROUND ON MOBILE */
+
+  .quote {
+    min-height: 620px;
+    padding: 44px 20px;
+    background-position: 62% center;
+    background-size: cover;
+  }
+
+  .quote::after {
+    height: var(--section-gap);
+    bottom: calc(-1 * var(--section-gap));
+  }
+
+  .quote .section-head,
+  .quote > p {
+    width: min(100%, 520px);
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .quote .section-head h2 {
+    font-size: 22px;
+    line-height: 1.7;
+  }
+
+  .quote > p {
+    font-size: 13px;
+    line-height: 2.05;
+  }
+
+  /* FINAL SECTION ON MOBILE */
+
+  .surprise {
+    min-height: 600px;
+    padding: 55px 18px;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .surprise h2 {
+    font-size: clamp(26px, 8vw, 34px);
+  }
+
+  .surprise .surprise-intro {
+    margin: 16px auto 22px;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .secret {
+    padding: 18px 14px;
+    margin-top: 18px;
+    border-radius: 9px;
+  }
+
+  .childhood-image {
+    width: auto;
+    max-width: 100%;
+    max-height: 62svh;
+    margin-bottom: 18px;
+    object-fit: contain;
+  }
+
+  .secret h3 {
+    margin-bottom: 14px;
+    font-size: 20px;
+  }
+
+  .secret p {
+    font-size: 13px;
+    line-height: 2.05;
+    text-align: right;
+    text-align-last: right;
+  }
+
+  footer {
+    padding: 18px 12px;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+}
+
+/* VERY NARROW PHONES */
+
+@media (max-width: 380px) {
+  :root {
+    --page-gutter: 14px;
+  }
+
+  .poster {
+    padding: 14px 9px;
+  }
+
+  .poster-top strong {
+    font-size: 24px;
+  }
+
+  .stamp {
+    font-size: 7px;
+    padding: 5px;
+  }
+
+  .poster-body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
     gap: 8px;
+  }
+
+  .suspect-photo {
+    height: 185px;
+  }
+
+  .details {
+    font-size: 8px;
+    gap: 9px;
+  }
+
+  .details label {
+    font-size: 7px;
+  }
+
+  .poster-bottom {
+    font-size: 7px;
+  }
+
+  .quote {
+    background-position: 65% center;
   }
 }
