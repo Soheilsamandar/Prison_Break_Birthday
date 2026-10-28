@@ -38,7 +38,7 @@ section {
   align-items: center;
   background:
     linear-gradient(90deg, #090a0bd9, #090a0b82),
-    url("img/background.jpg") center / cover no-repeat;
+    url("img/background.webp") center / cover no-repeat;
 }
 
 .top-label {
@@ -268,7 +268,7 @@ h1 span {
       rgba(0, 0, 0, 0.28),
       rgba(0, 0, 0, 0.08)
     ),
-    url("img/Stormy Night Behind the Fence.png");
+    url("img/Stormy\ Night\ Behind\ the\ Fence.webp");
 
   background-repeat: no-repeat;
   background-position: center;
@@ -355,7 +355,7 @@ h1 span {
       rgba(0, 0, 0, 0.35),
       rgba(0, 0, 0, 0.75)
     ),
-    url("img/love-background.png") center / cover no-repeat;
+    url("img/love-background.webp") center / cover no-repeat;
 
   color: #fff;
   text-align: center;
